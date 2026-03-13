@@ -58,11 +58,11 @@ jobs:
 
       - name: Clone Helm Repository
         run: |
-          git clone https://github.com/AhmedFathy360/devops-java-helm.git helm-repo
+          git clone https://github.com/AhmedFathy360/devops-java-helm.git --depth 1 --branch master ./helm-repo
 
       - name: Deploy Application via Helm
         run: |
-          helm upgrade --install java-app ./helm-repo/java-app-helm-chart \
+          helm upgrade --install java-app ./helm-repo \
             --namespace dev \
             --create-namespace \
             --set image.repository=perdita997/devops-java-app \
