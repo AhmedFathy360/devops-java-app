@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
+    workflow_dispatch:
     
 jobs:
   build-and-deploy:
@@ -58,11 +58,11 @@ jobs:
 
       - name: Clone Helm Repository
         run: |
-          git clone https://github.com/AhmedFathy360/devops-java-helm.git
+          git clone https://github.com/AhmedFathy360/devops-java-helm.git helm-repo
 
       - name: Deploy Application via Helm
         run: |
-          helm upgrade --install java-app ./devops-java-helm/java-app-helm-chart \
+          helm upgrade --install java-app ./helm-repo/java-app-helm-chart \
             --namespace dev \
             --create-namespace \
             --set image.repository=perdita997/devops-java-app \
